@@ -2,7 +2,6 @@ package com.github.leandrosouzasnts.domain;
 
 import com.github.leandrosouzasnts.event.EventDispatcher;
 import com.github.leandrosouzasnts.event.client.ClientCreatedEvent;
-import com.github.leandrosouzasnts.event.client.NotifyEmailClientCreatedHandler;
 
 public class Client {
     
