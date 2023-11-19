@@ -1,5 +1,9 @@
 package com.github.leandrosouzasnts.domain;
 
+import com.github.leandrosouzasnts.event.EventDispatcher;
+import com.github.leandrosouzasnts.event.client.ClientCreatedEvent;
+import com.github.leandrosouzasnts.event.client.NotifyEmailClientCreatedHandler;
+
 public class Client {
     
 
@@ -37,4 +41,8 @@ public class Client {
         this.email = email;
     }
     
+    public void toCreatedClient(EventDispatcher eventDispatcher){
+        ClientCreatedEvent event = new ClientCreatedEvent(this.clientId, this.name, this.email);   
+        eventDispatcher.notify(event);
+    }
 }

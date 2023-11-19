@@ -7,14 +7,18 @@ import com.github.leandrosouzasnts.event.client.ClientCreatedEvent;
 import com.github.leandrosouzasnts.event.client.ClientCreatedHandler;
 
 public class EventDispatcher {
-    
-    public static List<ClientCreatedHandler> listeners = new ArrayList<>();
 
-    public static void register(ClientCreatedHandler clientCreatedHandler){
-        listeners.add(clientCreatedHandler);
+    public final List<ClientCreatedHandler> listeners;
+
+    public EventDispatcher(){
+        this.listeners = new ArrayList<>();
     }
 
-    public static void notify(ClientCreatedEvent event){
+    public void register(ClientCreatedHandler clientCreatedHandler){
+        this.listeners.add(clientCreatedHandler);
+    }
+
+    public void notify(ClientCreatedEvent event){
         for(ClientCreatedHandler handle : listeners){
             handle.handleClientCreated(event);
         }
